@@ -8,8 +8,11 @@ node{
     sh "${mvn_home}/bin/mvn clean package"
   }
   
-  stage('Email Notification'){
-    mail bcc: 'b.mohanty1985@gmail.com', body: '''Thanks, 
-    Bhabani ''', cc: 'b.mohanty1985@gmail.com', from: '', replyTo: '', subject: 'Build Status', to: 'b.mohanty1985@gmail.com'
-  }
+  sshagent(['tomcatID']) {
+    sh 'scp -o StrictHostKeyChecking=no target/*war ec2-user' ec2-user@172.31.2.193:/opt/apache-tomcat-9.0.31/webapps/
+  }   
+ 
 }  
+        
+    
+  
