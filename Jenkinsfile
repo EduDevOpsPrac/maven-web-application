@@ -11,4 +11,5 @@ node{
   stage('Email Notification'){
     mail bcc: 'b.mohanty1985@gmail.com', body: '''Thanks, 
     Bhabani ''', cc: 'b.mohanty1985@gmail.com', from: '', replyTo: '', subject: 'Build Status', to: 'b.mohanty1985@gmail.com'
+  }
 }  
