@@ -13,9 +13,9 @@ node{
   sshagent(['tomcatID']) {
     sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.2.193'
     sh 'rm -rf /opt/apache-tomcat-9.0.31/maven-web-application'
-    sh '/opt/apache-tomcat-9.0.31/bin/catalina.sh stop'
+    sh '/opt/apache-tomcat-9.0.31/bin/shutdown.sh'
     sh 'scp -o StrictHostKeyChecking=no target/*war ec2-user@172.31.2.193:/opt/apache-tomcat-9.0.31/webapps/'
-    sh '/opt/apache-tomcat-9.0.31/bin/catalina.sh start'
+    sh '/opt/apache-tomcat-9.0.31/bin/start.sh'
   }   
  
 }  
