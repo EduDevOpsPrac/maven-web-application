@@ -11,10 +11,10 @@ node{
         sh 'scp -o StrictHostKeyChecking=no target/*war ec2-user@172.31.2.193:/opt/apache-tomcat-9.0.31/webapps/'
      }
   
-  stage('Restart Tomcat'){
-    sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.2.193'
-    sh '/opt/apache-tomcat-9.0.31/bin/shutdown.sh'
-    sh '/opt/apache-tomcat-9.0.31/bin/start.sh'
+     sshagent(['tomcatID']) {
+       sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.2.193'
+       sh '/opt/apache-tomcat-9.0.31/bin/shutdown.sh'
+       sh '/opt/apache-tomcat-9.0.31/bin/startup.sh'
   }   
  
 }  
